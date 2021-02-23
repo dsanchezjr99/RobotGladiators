@@ -18,6 +18,25 @@ var startGame = function () {
        //play again
 startGame();
 
+// use switch case to carry out action
+shopOptionPrompt = parseInt(shopOptionPrompt);
+
+switch (shopOptionPrompt) {
+  case 1:
+    playerInfo.refillHealth();
+    break;
+  case 2:
+    playerInfo.upgradeAttack();
+    break;
+  case 3:
+    window.alert("Leaving the store.");
+    break;
+  default:
+    window.alert("You did not pick a valid option. Try again.");
+    shop();
+    break;
+}
+
 // function to end entire game
 var endGame = function() {
   // if player still alive, player wins!
@@ -124,6 +143,10 @@ if (promptFight === "skip") {
       // subtract money from playerMoney for skipping
       playerInfo.playerMoney = playerInfo.money - 10;
       shop();
+      
+      var shopOptionPrompt = window.prompt(
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
+      );
     }
   }
 }
